@@ -1,0 +1,38 @@
+.side-bar__main{
+    top: 0;
+    left:0;
+    position:fixed;
+    flex-direction: column;
+    justify-content: center;
+    width:117px;
+    background-color: black;
+    display:flex;
+    height:100%;
+}
+
+.main__icones-container{
+    width:100%;
+    height:50%;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    margin:auto;
+}
+.main__icones-container .svg{
+    margin:auto;
+    width: 70px;
+}
+.main__copyright-container {
+    height:auto;
+}
+.main__copyright-container p{
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    transform: rotate(-90deg);
+    color: white;
+    white-space: nowrap ;
+    position:absolute;
+    bottom:0;
+    margin-bottom: 80px;
+}
