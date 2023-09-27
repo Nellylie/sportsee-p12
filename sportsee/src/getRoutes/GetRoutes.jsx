@@ -1,17 +1,19 @@
+
 import { Routes, Route } from 'react-router';
 import HomePage from '../pages/HomePage';
 import Error from '../pages/Error';
 import Profil from '../pages/Profil';
 
-function GetRoutes(){
-
+function RoutesProvider() {
+ 
   return (
     <Routes>
       <Route path="/" element= {<HomePage/>}/>
-      <Route path="/*" element={<Error/>}/>
       <Route path="/Profil" element={<Profil/>}/>
+      <Route path="/Profil/:id" element={<Profil/>}/>
+      <Route path="/*" element={<Error/>}/>
     </Routes>
   );
 }
 
-export default GetRoutes;
+export default RoutesProvider;
