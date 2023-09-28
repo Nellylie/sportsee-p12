@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/sportsee-p12/static/css/main.08edb628.css",
+    "main.js": "/sportsee-p12/static/js/main.ceb3976c.js",
+    "static/js/787.a8762e9d.chunk.js": "/sportsee-p12/static/js/787.a8762e9d.chunk.js",
+    "static/media/logo.svg": "/sportsee-p12/static/media/logo.91308fbcbce811907c09885e1241b59f.svg",
+    "static/media/swim.svg": "/sportsee-p12/static/media/swim.c135dfed9473b0728721ce9a4c20819a.svg",
+    "static/media/bike.svg": "/sportsee-p12/static/media/bike.22f466fe8b96cfda1498781030e75542.svg",
+    "static/media/apple.svg": "/sportsee-p12/static/media/apple.95581ba1b204199334e122af4784ab16.svg",
+    "static/media/yoga.svg": "/sportsee-p12/static/media/yoga.e6da2f731117475422a8c38c6684702f.svg",
+    "static/media/chicken.svg": "/sportsee-p12/static/media/chicken.ffbc3b88a759c706993bb26fbd66113b.svg",
+    "static/media/cheeseburger.svg": "/sportsee-p12/static/media/cheeseburger.18f60e0efe37e86bcac036d673f0bab0.svg",
+    "index.html": "/sportsee-p12/index.html",
+    "static/media/energy.svg": "/sportsee-p12/static/media/energy.25fef86ed5860200bdf90f9cd185e1e3.svg",
+    "static/media/barbell.svg": "/sportsee-p12/static/media/barbell.c9f62cf1ca88da4b2dee77390edd0fe3.svg",
+    "main.08edb628.css.map": "/sportsee-p12/static/css/main.08edb628.css.map",
+    "main.ceb3976c.js.map": "/sportsee-p12/static/js/main.ceb3976c.js.map",
+    "787.a8762e9d.chunk.js.map": "/sportsee-p12/static/js/787.a8762e9d.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.08edb628.css",
+    "static/js/main.ceb3976c.js"
+  ]
+}
