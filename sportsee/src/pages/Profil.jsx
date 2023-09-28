@@ -47,7 +47,7 @@ function Profil () {
 
   const idUser = useParams().id;
   const [isDataLoading, setDataLoading] = useState(true);
-  const [apiStatut] = useState(false);
+  const [apiStatut] = useState(true);
   console.log("userid", idUser, "datas 22", datas);
 
 
@@ -82,6 +82,11 @@ function Profil () {
       <Header/>
       <Sidebar/>
       <main>
+        <div>
+          <p>Bonjour <span>{datas?.userDatas?.userInfos?.firstName}</span></p>
+          <p>Félicitation ! Vous avez explosé vos objectifs hier <span>👏</span></p>
+
+        </div>
         <Barschart data = {datas?.activitiesDatas?.sessions}/>
         <Lineschart data = {datas?.averageDatas?.sessions}/>
         <div className = "cards">
