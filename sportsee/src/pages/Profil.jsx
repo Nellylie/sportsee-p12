@@ -47,19 +47,17 @@ function Profil () {
 
   const idUser = useParams().id;
   const [isDataLoading, setDataLoading] = useState(true);
-  const [apiStatut] = useState(true);
+  const [apiStatut] = useState(false);
   console.log("userid", idUser, "datas 22", datas);
 
 
   useEffect(() => {
-    const url = "http://localhost:3000";
-    console.log("datamock", url +'/datas/datasMocked.json');
     const fetchData = async () => {
       try {
         if (apiStatut) {
-          setDatas(await getDatasSection(undefined, parseInt(idUser), apiStatut));
+          setDatas(await getDatasSection(parseInt(idUser), apiStatut));
         } else {
-          setDatas(await getDatasSection(url + '/datas/datasMocked.json', parseInt(idUser)));
+          setDatas(await getDatasSection( parseInt(idUser), apiStatut));
         }
       } catch (err) {
         console.log(err);
@@ -82,15 +80,16 @@ function Profil () {
       <Header/>
       <Sidebar/>
       <main>
-        <div>
+        <div className = "home-welcome">
           <p>Bonjour <span>{datas?.userDatas?.userInfos?.firstName}</span></p>
           <p>Félicitation ! Vous avez explosé vos objectifs hier <span>👏</span></p>
-
         </div>
-        <Barschart data = {datas?.activitiesDatas?.sessions}/>
-        <Lineschart data = {datas?.averageDatas?.sessions}/>
-        <div className = "cards">
-          <div>
+        <div className="container-profil">
+          <div className="main-left-container">
+            <Barschart className ="barchart-container" data = {datas?.activitiesDatas?.sessions}/>
+            <Lineschart data = {datas?.averageDatas?.sessions}/>
+          </div>
+          <div className = "cards">
             {cardData.map((card, index) => (
               <Cards
                 key={index}

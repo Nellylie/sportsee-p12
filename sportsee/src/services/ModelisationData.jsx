@@ -1,7 +1,7 @@
 import { fetchData } from './CallApi';
 import datas from '../datas/datasMocked.json';
 
-export async function getDatasSection(mock, userId, apiCall) {
+export async function getDatasSection(userId, apiCall) {
   const API_URL = "http://localhost:3001";
   const fetchDataFromApi = endpoint => fetchData(API_URL, userId, endpoint);
   console.log("apDDDDDi", fetchDataFromApi(''));
