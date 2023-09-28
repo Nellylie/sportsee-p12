@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/sportsee-p12/static/css/main.08edb628.css",
-    "main.js": "/sportsee-p12/static/js/main.4d0076ca.js",
+    "main.js": "/sportsee-p12/static/js/main.47a10de7.js",
     "static/js/787.a8762e9d.chunk.js": "/sportsee-p12/static/js/787.a8762e9d.chunk.js",
     "static/media/logo.svg": "/sportsee-p12/static/media/logo.91308fbcbce811907c09885e1241b59f.svg",
     "static/media/swim.svg": "/sportsee-p12/static/media/swim.c135dfed9473b0728721ce9a4c20819a.svg",
@@ -14,11 +14,11 @@
     "static/media/energy.svg": "/sportsee-p12/static/media/energy.25fef86ed5860200bdf90f9cd185e1e3.svg",
     "static/media/barbell.svg": "/sportsee-p12/static/media/barbell.c9f62cf1ca88da4b2dee77390edd0fe3.svg",
     "main.08edb628.css.map": "/sportsee-p12/static/css/main.08edb628.css.map",
-    "main.4d0076ca.js.map": "/sportsee-p12/static/js/main.4d0076ca.js.map",
+    "main.47a10de7.js.map": "/sportsee-p12/static/js/main.47a10de7.js.map",
     "787.a8762e9d.chunk.js.map": "/sportsee-p12/static/js/787.a8762e9d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.08edb628.css",
-    "static/js/main.4d0076ca.js"
+    "static/js/main.47a10de7.js"
   ]
 }
