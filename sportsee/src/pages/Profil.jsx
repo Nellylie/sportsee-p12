@@ -10,12 +10,12 @@ import iconProtein from '../icones/chicken.svg';
 import iconFat from '../icones/cheeseburger.svg';
 import Cards from "../components/Cards";
 import Lineschart from "../componentsRecharts/Lineschart";
+import ErrorMessageModal from "../componentsRecharts/ErrorMessage";
 
 
 
 
-
-function Profil () {
+function Profil ({apiStatut}) {
   const [datas, setDatas] = useState(null);
 
   const cardData = [
@@ -47,32 +47,27 @@ function Profil () {
 
   const idUser = useParams().id;
   const [isDataLoading, setDataLoading] = useState(true);
-  const [apiStatut] = useState(false);
-  console.log("userid", idUser, "datas 22", datas);
-
-
+  const [errorMessage, setErrorMessage] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (apiStatut) {
-          setDatas(await getDatasSection(parseInt(idUser), apiStatut));
-        } else {
-          setDatas(await getDatasSection( parseInt(idUser), apiStatut));
-        }
+        const fetchedData = await getDatasSection(parseInt(idUser), apiStatut);
+        setDatas(fetchedData);
       } catch (err) {
-        console.log(err);
+        console.error(err);
+        setErrorMessage(err.message || "An unknown error occurred.");
       } finally {
         setDataLoading(false);
       }
     };
   
     fetchData();
-    return () => {
-    };
-  }, [apiStatut, idUser]);
-  
-  console.log('Routes file', datas);
-  
+  }, [idUser]);
+
+  if (errorMessage) {
+    return <ErrorMessageModal message= {errorMessage}/>;
+  }
+
   if (isDataLoading) return null; 
   
   return (

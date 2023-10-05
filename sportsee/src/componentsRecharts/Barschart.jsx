@@ -5,7 +5,7 @@ function getTopThreeUniqueKilograms(data) {
   return uniqueKilograms.slice(0, 3);
 }
 function calculateEvenTickPositions(chartHeight, tickCount) {
-  const distanceBetweenTicks = chartHeight / (tickCount + 1); // +1 because we want to leave space at the top
+  const distanceBetweenTicks = chartHeight / (tickCount + 1);
   let positions = [];
   for(let i=1; i <= tickCount; i++) {
     positions.push(distanceBetweenTicks * i);

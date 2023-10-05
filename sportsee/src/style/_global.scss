@@ -12,3 +12,39 @@ margin: 117px;
 display:flex;
 flex-direction:column;
 }
+
+.error-message{
+    position: fixed;
+    top: 50%;
+    left: calc(50% + 60px);
+    transform: translate(-50%, -50%);
+    background-color: red;
+    padding: 20px;
+    border-radius: 20px;
+    width: 50%; 
+    text-align: center;
+    position: 'fixed';
+    background-color: 'rgba(0,0,0,0.7)';
+    z-index: 999;
+    color:white;
+    font-size: 50px;
+};
+
+.buttons-container{
+    position: fixed;
+    top: 50%;
+    left: calc(50% + 60px);
+    transform: translate(-50%, -50%);
+    background-color: red;
+    padding: 20px;
+    border-radius: 20px;
+    width: 50%; 
+    text-align: center;
+    position: 'fixed';
+    background-color: 'rgba(0,0,0,0.7)';
+    z-index: 999;
+    color:white;
+    font-size: 50px;
+
+
+}
