@@ -1,16 +1,16 @@
-import datas from '../datas/datasMocked.json';
+import { fetchData } from './linkApi'; 
 
 export async function getDatasSection(uId) {
-  const retrieveData = (type) => {
-    const data = datas[0][type].find(data =>data.userId === parseInt(uId));
+  const retrieveData = async (type) => {
+    const data = await fetchData(uId, type);
     if (!data) {
       throw new Error(`L'utilisateur ${uId} n'est pas enregistré`);
     }
     return data;
   };
 
-  const getDatasUserInfos = () => {
-    const { keyData, todayScore, score, userId, userInfos } = retrieveData('userMainData');
+  const getDatasUserInfos = async () => {
+    const { keyData, todayScore, score, userId, userInfos } = await retrieveData('');
     
     return {
       keyData: {
@@ -19,7 +19,7 @@ export async function getDatasSection(uId) {
         carbohydrateCount: keyData.carbohydrateCount,
         lipidCount: keyData.lipidCount
       },
-      score:todayScore||score,
+      score: todayScore || score,
       userId,
       userInfos: {
         firstName: userInfos.firstName,
@@ -30,18 +30,19 @@ export async function getDatasSection(uId) {
   };
 
   const formatActivitiesSessions = sessions => sessions.map(({ day, kilogram, calories }) => ({ day: day.toString().slice(-1), kilogram, calories }));
-  const getDatasActivities = () => {
-    const { userId, sessions } = retrieveData('userActivities');
+  
+  const getDatasActivities = async () => {
+    const { userId, sessions } = await retrieveData('activity');
     return { userId, sessions: formatActivitiesSessions(sessions) };
   };
 
-  const getDatasAverage = () => {
-    const { userId, sessions } = retrieveData('userAverageSession');
+  const getDatasAverage = async () => {
+    const { userId, sessions } = await retrieveData('average-sessions');
     return { userId, sessions: sessions.map(({ day, sessionLength }) => ({ day, sessionLength })) };
   };
 
-  const getDatasUserPerformance = () => {
-    const { userId, kind, data } = retrieveData('userPerformances');
+  const getDatasUserPerformance = async () => {
+    const { userId, kind, data } = await retrieveData('performance');
     const kindFrenchArray = ["Cardio", "Energie", "Endurance", "Force", "Vitesse", "Intensité"];
 
     const kindFrench = (indexKind) => {
@@ -61,9 +62,9 @@ export async function getDatasSection(uId) {
   };
 
   return {
-    userDatas: getDatasUserInfos(),
-    activitiesDatas: getDatasActivities(),
-    averageDatas: getDatasAverage(),
-    performancesDatas: getDatasUserPerformance()
+    userDatas: await getDatasUserInfos(),
+    activitiesDatas: await getDatasActivities(),
+    averageDatas: await getDatasAverage(),
+    performancesDatas: await getDatasUserPerformance()
   };
 }
