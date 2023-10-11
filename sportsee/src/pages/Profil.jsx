@@ -12,7 +12,7 @@ import Cards from "../components/Cards";
 import Lineschart from "../componentsRecharts/Lineschart";
 import ErrorMessageModal from "../componentsRecharts/ErrorMessage";
 import Radarchart from "../componentsRecharts/Radarchart";
-
+import Radialchart from "../componentsRecharts/Radialchart";
 function Profil () {
   const [datas, setDatas] = useState(null);
   const idUser = useParams().id;
@@ -80,6 +80,8 @@ function Profil () {
             <Barschart className ="barchart-container" data = {datas?.activitiesDatas?.sessions}/>
             <Lineschart data = {datas?.averageDatas?.sessions}/>
             <Radarchart data = {datas?.performancesDatas?.dataPerformance}/>
+            {console.log("datascore", datas?.userDatas?.score)}
+            <Radialchart data = {datas?.userDatas?.score}/>
           </div>
           <div className = "cards">
             {cardData.map((card, index) => (

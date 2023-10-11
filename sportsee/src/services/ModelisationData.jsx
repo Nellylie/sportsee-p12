@@ -10,7 +10,7 @@ export async function getDatasSection(uId) {
   };
 
   const getDatasUserInfos = () => {
-    const { keyData, todayScore, userId, userInfos } = retrieveData('userMainData');
+    const { keyData, todayScore, score, userId, userInfos } = retrieveData('userMainData');
     
     return {
       keyData: {
@@ -19,7 +19,7 @@ export async function getDatasSection(uId) {
         carbohydrateCount: keyData.carbohydrateCount,
         lipidCount: keyData.lipidCount
       },
-      todayScore,
+      score:todayScore||score,
       userId,
       userInfos: {
         firstName: userInfos.firstName,
