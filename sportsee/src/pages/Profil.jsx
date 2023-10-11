@@ -12,12 +12,33 @@ import Cards from "../components/Cards";
 import Lineschart from "../componentsRecharts/Lineschart";
 import ErrorMessageModal from "../componentsRecharts/ErrorMessage";
 
-
-
-
-function Profil ({apiStatut}) {
+function Profil () {
   const [datas, setDatas] = useState(null);
+  const idUser = useParams().id;
+  const [isDataLoading, setDataLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedData = await getDatasSection(idUser);
+        setDatas(fetchedData);
+      } catch (err) {
+        setErrorMessage(err.message || "An unknown error occurred.");
+      } finally {
+        setDataLoading(false);
+      }
+    };
+  
+    fetchData();
+  }, [idUser]);
+
+  if (errorMessage) {
+    return <ErrorMessageModal message= {errorMessage}/>;
+  }
+
+  if (isDataLoading) return null; 
+  
   const cardData = [
     {
       icon: iconCalories,
@@ -44,32 +65,6 @@ function Profil ({apiStatut}) {
       unit: "g",
     },
   ];
-
-  const idUser = useParams().id;
-  const [isDataLoading, setDataLoading] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const fetchedData = await getDatasSection(parseInt(idUser), apiStatut);
-        setDatas(fetchedData);
-      } catch (err) {
-        console.error(err);
-        setErrorMessage(err.message || "An unknown error occurred.");
-      } finally {
-        setDataLoading(false);
-      }
-    };
-  
-    fetchData();
-  }, [idUser]);
-
-  if (errorMessage) {
-    return <ErrorMessageModal message= {errorMessage}/>;
-  }
-
-  if (isDataLoading) return null; 
-  
   return (
     <div>
       <Header/>

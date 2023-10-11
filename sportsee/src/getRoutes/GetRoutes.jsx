@@ -2,23 +2,21 @@ import { Routes, Route } from 'react-router';
 import HomePage from '../pages/HomePage';
 import Error from '../pages/Error';
 import Profil from '../pages/Profil';
-import { createContext, useState } from 'react';
+import { createContext } from 'react';
 
-export const StatutApiContext = createContext();
+export const DatasContext = createContext();
 
 function RoutesProvider() {
-  const [apiStatut, setApiStatut] = useState(false);
-  const statutApiModifiable = (value) => { setApiStatut(value); };
 
   return (
-    <StatutApiContext.Provider value={{ apiStatut, statutApiModifiable }}>
+    <DatasContext.Provider value={DatasContext}>
       <Routes>
-        <Route path="/" element={<HomePage apiStatut={apiStatut} statutApiModifiable={statutApiModifiable} />} />
-        <Route path="/Profil" element={<Profil apiStatut={apiStatut} />} />
-        <Route path="/Profil/:id" element={<Profil apiStatut={apiStatut} />} />
-        <Route path="/*" element={<Error />} />
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/Profil" element={<Profil/> }/>
+        <Route path="/Profil/:id" element={<Profil/>} />
+        <Route path="/*" element={<Error />}/>
       </Routes>
-    </StatutApiContext.Provider>
+    </DatasContext.Provider>
   );
 }
 
