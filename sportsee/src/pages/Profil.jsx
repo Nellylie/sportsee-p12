@@ -11,6 +11,7 @@ import iconFat from '../icones/cheeseburger.svg';
 import Cards from "../components/Cards";
 import Lineschart from "../componentsRecharts/Lineschart";
 import ErrorMessageModal from "../componentsRecharts/ErrorMessage";
+import Radarchart from "../componentsRecharts/Radarchart";
 
 function Profil () {
   const [datas, setDatas] = useState(null);
@@ -78,6 +79,7 @@ function Profil () {
           <div className="main-left-container">
             <Barschart className ="barchart-container" data = {datas?.activitiesDatas?.sessions}/>
             <Lineschart data = {datas?.averageDatas?.sessions}/>
+            <Radarchart data = {datas?.performancesDatas?.dataPerformance}/>
           </div>
           <div className = "cards">
             {cardData.map((card, index) => (

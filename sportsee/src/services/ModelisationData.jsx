@@ -8,7 +8,7 @@ export async function getDatasSection(uId) {
     }
     return data;
   };
-  
+
   const getDatasUserInfos = () => {
     const { keyData, todayScore, userId, userInfos } = retrieveData('userMainData');
     
@@ -42,10 +42,21 @@ export async function getDatasSection(uId) {
 
   const getDatasUserPerformance = () => {
     const { userId, kind, data } = retrieveData('userPerformances');
+    const kindFrenchArray = ["Cardio", "Energie", "Endurance", "Force", "Vitesse", "Intensité"];
+
+    const kindFrench = (indexKind) => {
+      if (indexKind >= 0 && indexKind < kindFrenchArray.length) {
+        return kindFrenchArray[indexKind];
+      } else {
+        console.warn(`Invalid indexKind: ${indexKind}`);
+        return "Unknown";
+      }
+    };
+
     return {
       userId,
       kind,
-      dataPerformance: data.map(({ value, kind }) => ({ value, kind }))
+      dataPerformance: data.map(({ value, kind }) => ({ value, kind: kindFrench(kind-1) }))
     };
   };
 
