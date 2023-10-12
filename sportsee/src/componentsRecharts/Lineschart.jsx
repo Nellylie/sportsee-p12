@@ -1,29 +1,43 @@
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
+function SessionsTooltip({ payload, active }) {
+  if (active && payload && payload.length) {
+    return (
+      <div style={{ backgroundColor: 'white', paddingLeft:'10px', paddingRight:'10px'}}>
+        <p>{payload[0].value} min</p>
+      </div>
+    );
+  }
+
+  return null;
+}
 function Lineschart({data}) {
-  console.log("datasession", data);
   return (
-    <LineChart
-      width={600}
-      height={300}
-      data={data}
-      margin={{
-        top: 5, right: 30, left: 20, bottom: 5,
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="day" />
-      <YAxis />
-      <Tooltip />
-      <Line 
-        type="monotone" 
-        dataKey="sessionLength" 
-        stroke="#8884d8" 
-        strokeWidth={2} 
-        dot={true}
-        activeDot={{ r: 8 }} 
-      />
-    </LineChart>
+    <div style={{ backgroundColor: 'red', width: '258px', height: 'auto', aspectRatio: '1/1' }}>
+      <ResponsiveContainer width="100%" height="100%" aspect={1}>
+        <LineChart
+          data={data}
+          margin={{
+            top: 25, right: 10, left: -50, bottom: 25,
+          }}
+        >
+          <XAxis dataKey="day" stroke="white"
+            tickLine={false} 
+            axisLine={false}
+          />
+          <YAxis stroke="transparent" />
+          <Tooltip content={<SessionsTooltip />} />
+          <Line 
+            dot={false}
+            type="monotone" 
+            dataKey="sessionLength" 
+            stroke="white"
+            strokeWidth={2} 
+            activeDot={{ r: 8, fill: 'white' }} 
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 }
 

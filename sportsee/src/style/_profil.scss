@@ -9,8 +9,27 @@
     justify-content: space-between;
 }
 .main-left-container{
+    width:100%;
 }
 .barchart-container{
+    width:fit-content;
+    margin:auto;
+}
+.container-line-radar-radial{
+    display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width:90%;
+}
+.linechart-container{
+    width:fit-content;
+    margin:auto;
+}
+.radarchart-container{
+    width:fit-content;
+    margin:auto;
+}
+.radialchart-container{
     width:fit-content;
     margin:auto;
 }
