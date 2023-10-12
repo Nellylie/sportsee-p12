@@ -37,7 +37,8 @@ export async function getDatasSection(uId) {
 
   const getDatasAverage = () => {
     const { userId, sessions } = retrieveData('userAverageSession');
-    return { userId, sessions: sessions.map(({ day, sessionLength }) => ({ day, sessionLength })) };
+    const arrayDay = ["L", "M", "M", "J", "V", "S", "D"];
+    return { userId, sessions: sessions.map(({ day, sessionLength }) => ({ day: arrayDay[day-1], sessionLength })) };
   };
 
   const getDatasUserPerformance = () => {
