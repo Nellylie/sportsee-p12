@@ -12,7 +12,7 @@ function RoutesProvider() {
     <DatasContext.Provider value={DatasContext}>
       <Routes>
         <Route path="/" element={<HomePage/>} />
-        <Route path="/Profil" element={<Profil/> }/>
+        <Route path="/Profil" element={<HomePage/> }/>
         <Route path="/Profil/:id" element={<Profil/>} />
         <Route path="/*" element={<Error />}/>
       </Routes>
