@@ -78,10 +78,11 @@ function Profil () {
         <div className="container-profil">
           <div className="main-left-container">
             <Barschart className ="barchart-container" data = {datas?.activitiesDatas?.sessions}/>
-            <Lineschart data = {datas?.averageDatas?.sessions}/>
-            <Radarchart data = {datas?.performancesDatas?.dataPerformance}/>
-            {console.log("datascore", datas?.userDatas?.score)}
-            <Radialchart data = {datas?.userDatas?.score}/>
+            <div className="container-line-radar-radial">
+              <Lineschart className ="linechart-container" data = {datas?.averageDatas?.sessions}/>
+              <Radarchart className ="radarchart-container" data = {datas?.performancesDatas?.dataPerformance}/>
+              <Radialchart className="radialchart-container" data = {datas?.userDatas?.score}/>
+            </div>
           </div>
           <div className = "cards">
             {cardData.map((card, index) => (
