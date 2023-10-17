@@ -1,16 +1,16 @@
-function Cards (props) {
+function Cards ({icon, number, unit, type, color}) {
 
   return (
-    <div>
-      <div>
-        <img src={props.icon} alt="icon" />
+    <div className="cards-container">
+      <div className="cards-img" style={{ backgroundColor: color }}>        
+        <img src={icon} alt="icon" />
       </div>
-      <div>
-        <div>
-          {props.number}
-          {props.unit}
+      <div className="cards-description">
+        <div className="description-unit">
+          {number}
+          {unit}
         </div>
-        <div>{props.type}</div>
+        <div className="description-type">{type}</div>
       </div>
 
     </div>

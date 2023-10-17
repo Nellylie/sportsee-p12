@@ -1,28 +1,29 @@
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { useEffect, useState } from "react";
-import { getDatasSection } from '../services/ModelisationData'; 
+import { getDatasSection } from '../services/formatData'; 
 import { useParams } from "react-router-dom";
 import Barschart from '../componentsRecharts/Barschart';
-import iconCalories from '../icones/energy.svg';
-import iconCarbs from '../icones/apple.svg';
-import iconProtein from '../icones/chicken.svg';
-import iconFat from '../icones/cheeseburger.svg';
 import Cards from "../components/Cards";
 import Lineschart from "../componentsRecharts/Lineschart";
 import ErrorMessageModal from "../componentsRecharts/ErrorMessage";
 import Radarchart from "../componentsRecharts/Radarchart";
 import Radialchart from "../componentsRecharts/Radialchart";
+import { cardData } from "../components/utils/cardData";
+
 function Profil () {
   const [datas, setDatas] = useState(null);
   const idUser = useParams().id;
   const [isDataLoading, setDataLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-
+  
+  // eslint-disable-next-line no-unused-vars, no-undef
+  const [kindData, setKindData] = useState(true);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchedData = await getDatasSection(idUser);
+        const fetchedData = await getDatasSection(idUser, kindData);
         setDatas(fetchedData);
       } catch (err) {
         setErrorMessage(err.message || "An unknown error occurred.");
@@ -40,32 +41,6 @@ function Profil () {
 
   if (isDataLoading) return null; 
   
-  const cardData = [
-    {
-      icon: iconCalories,
-      number: datas?.userDatas?.keyData?.calorieCount,
-      type: "Calories",
-      unit: "kCal",
-    },
-    {
-      icon: iconProtein,
-      number: datas?.userDatas?.keyData?.proteinCount,
-      type: "Proteines",
-      unit: "g",
-    },
-    {
-      icon: iconCarbs,
-      number: datas?.userDatas?.keyData?.carbohydrateCount,
-      type: "Glucides",
-      unit: "g",
-    },
-    {
-      icon: iconFat,
-      number: datas?.userDatas?.keyData?.lipidCount,
-      type: "Lipides",
-      unit: "g",
-    },
-  ];
   return (
     <div>
       <Header/>
@@ -85,13 +60,14 @@ function Profil () {
             </div>
           </div>
           <div className = "cards">
-            {cardData.map((card, index) => (
+            {cardData(datas).map((card, index) => (
               <Cards
                 key={index}
                 icon={card.icon} 
                 number={card.number} 
                 type={card.type} 
                 unit={card.unit} 
+                color={card.color}
               />
             ))}
           </div>
