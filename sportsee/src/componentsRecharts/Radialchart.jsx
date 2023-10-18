@@ -9,10 +9,12 @@ export default function Radialchart({ data }) {
 
   return (
     <div style={{
-      width: 258,
-      height: 253,
+      width: '200px',
+      height: '200px',
       backgroundColor: '#FBFBFB',
       display: 'flex',
+      padding:'5px',
+      borderRadius:'5px',
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative'

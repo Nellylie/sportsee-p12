@@ -13,7 +13,7 @@ function SessionsTooltip({ payload, active }) {
 }
 function Lineschart({data}) {
   return (
-    <div style={{ backgroundColor: 'red', width: '258px', height: 'auto', aspectRatio: '1/1' }}>
+    <div style={{ backgroundColor: 'red', borderRadius:'5px', padding:'5px', width: '200px', height: '200px', aspectRatio: '1/1' }}>
       <ResponsiveContainer width="100%" height="100%" aspect={1}>
         <LineChart
           data={data}

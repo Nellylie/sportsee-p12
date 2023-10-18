@@ -4,17 +4,18 @@ export default function HexaRadarChart({data}) {
   const reversedData = [...data].reverse();
 
   return (
-    <div style={{ backgroundColor: '#282D30', width: '258px', height: 'auto', aspectRatio: '1/1' }}>
+    <div style={{ backgroundColor: '#282D30', borderRadius:'5px',
+      width:'200px', height: '200px', padding:'5px', aspectRatio: '1/1' }}>
       <ResponsiveContainer width="100%" height="100%" aspect={1}>
         <RadarChart 
           cx="50%" 
           cy="50%" 
-          outerRadius={90} 
+          outerRadius={70} 
           data={reversedData}
         >
           <PolarGrid gridType="polygon" />
           <PolarAngleAxis dataKey="kind"
-            tick={{ fontSize: '12px' }}
+            tick={{ fontSize: '10px' }}
           />
           <Tooltip 
           />
