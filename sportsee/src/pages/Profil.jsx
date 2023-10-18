@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { useEffect, useState } from "react";
-import { getDatasSection } from '../services/formatData'; 
+import { getDatasSection } from '../utilsData/formatData'; 
 import { useParams } from "react-router-dom";
 import Barschart from '../componentsRecharts/Barschart';
 import Cards from "../components/Cards";
@@ -13,17 +13,18 @@ import { cardData } from "../components/utils/cardData";
 
 function Profil () {
   const [datas, setDatas] = useState(null);
-  const idUser = useParams().id;
+  const uId = useParams().id;
   const [isDataLoading, setDataLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   
   // eslint-disable-next-line no-unused-vars, no-undef
-  const [kindData, setKindData] = useState(true);
+  const [statusApi, setstatusApi] = useState(false);
+  
   
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const fetchedData = await getDatasSection(idUser, kindData);
+        const fetchedData = await getDatasSection(uId, statusApi);
         setDatas(fetchedData);
       } catch (err) {
         setErrorMessage(err.message || "An unknown error occurred.");
@@ -33,7 +34,7 @@ function Profil () {
     };
   
     fetchData();
-  }, [idUser]);
+  }, [uId]);
 
   if (errorMessage) {
     return <ErrorMessageModal message= {errorMessage}/>;
@@ -47,7 +48,7 @@ function Profil () {
       <Sidebar/>
       <main>
         <div className = "home-welcome">
-          <p>Bonjour <span>{datas?.userDatas?.userInfos?.firstName}</span></p>
+          <p className="home-welcome-p">Bonjour <span>{datas?.userDatas?.userInfos?.firstName}</span></p>
           <p>Félicitation ! Vous avez explosé vos objectifs hier <span>👏</span></p>
         </div>
         <div className="container-profil">
