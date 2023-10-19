@@ -56,7 +56,7 @@ function Barschart({data}) {
   const calorieDomain = [0, maxKilogram * 2];
 
   return (
-    <div style={{ backgroundColor: '#FBFBFB', padding: '10px', width: '700px', height: '230px', aspectRatio: '16/9' }}>
+    <div style={{ backgroundColor: '#FBFBFB', padding: '10px 10px 2px 10px', width: '700px', height: '230px', aspectRatio: '16/9' }}>
 
       <ResponsiveContainer
         width={"100%"}
