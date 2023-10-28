@@ -7,7 +7,7 @@ export async function getDatasSection(uId, statusApi) {
     const { keyData, todayScore, score, userId, userInfos } = statusApi ? await fetchData(uId, '') : retrieveDataMock('userMainData', uId);
     return {
       keyData: {
-        calorieCount: keyData.calorieCount.toLocaleString(),
+        calorieCount: keyData.calorieCount.toLocaleString('en-US'),
         proteinCount: keyData.proteinCount,
         carbohydrateCount: keyData.carbohydrateCount,
         lipidCount: keyData.lipidCount
@@ -26,7 +26,7 @@ export async function getDatasSection(uId, statusApi) {
     sessions.map(({ day, kilogram, calories }) => ({
       day: Number( day.toString().slice(-2)),
      
-      kilogram,
+      kilogram: Math.floor(kilogram),
       calories
     }));
 

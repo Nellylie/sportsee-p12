@@ -4,26 +4,6 @@ function getTopThreeUniqueKilograms(data) {
   const uniqueKilograms = [...new Set(data.map(item => item.kilogram))].sort((a, b) => b - a);
   return uniqueKilograms.slice(0, 3);
 }
-function calculateEvenTickPositions(chartHeight, tickCount) {
-  const distanceBetweenTicks = chartHeight / (tickCount + 1);
-  let positions = [];
-  for(let i=1; i <= tickCount; i++) {
-    positions.push(distanceBetweenTicks * i);
-  }
-  return positions;
-}
-
-const CustomYAxisTick = ({ x, payload, position }) => {
-  return (
-    <g transform={`translate(${x},${position})`}>
-      <text x={0} y={0} dy={-4} textAnchor="end" fill="#666" fontSize={10}>
-        {payload.value}
-      </text>
-      <text x={-30} y={0} dy={-4} textAnchor="end" fill="#888" fontSize={8}>
-      </text>
-    </g>
-  );
-};
 
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
@@ -56,11 +36,11 @@ function Barschart({data}) {
   const calorieDomain = [0, maxKilogram * 2];
 
   return (
-    <div style={{ backgroundColor: '#FBFBFB', padding: '10px 10px 2px 10px', width: '700px', height: '230px', aspectRatio: '16/9' }}>
+    <div style={{ backgroundColor: '#FBFBFB', padding: '10px 10px 2px 10px', width: '100%', height: '250px', aspectRatio: '16/9' }}>
 
       <ResponsiveContainer
         width={"100%"}
-        height={200}
+        height={"100%"}
       >
         <BarChart
           width={600}
@@ -77,16 +57,11 @@ function Barschart({data}) {
             yAxisId="right"
             orientation="right"
             domain={[minKilogram, maxKilogram]}
-            Tick={props => {
-              const tickPositions = calculateEvenTickPositions(300, topThreeKilograms.length);
-              return (
-                <CustomYAxisTick
-                  {...props}
-                  position={tickPositions.shift()}
-                />
-              );
-            }}
+            tickCount={topThreeKilograms.length}
+            tickFormatter={(value) => topThreeKilograms.includes(value) ? value : ''}
+            ticks={topThreeKilograms}
           />
+
           <YAxis
             yAxisId="left"
             orientation="left"

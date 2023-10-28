@@ -31,16 +31,17 @@
  justify-content: flex-start;
  align-items: flex-start;
  text-align: left;
- width:20px;
+ width:30px;
  font-size: 15px;
  padding: 5px 15px;
+ flex-wrap: nowrap;
 }
 
 .description-unit{
  display:flex;
+ width:100px;
  flex-direction: row;
  flex-wrap: nowrap;
- white-space: none;
 }
 .description-type{
     font-size: 12px;
