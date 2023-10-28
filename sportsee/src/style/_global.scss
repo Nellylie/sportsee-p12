@@ -6,6 +6,10 @@ $font: 'Roboto', sans-serif;
     font-weight: 500;
 }
 
+body{
+    width:100%;
+    min-width: 800px;
+}
 main{
 
 margin: 100px 70px;
@@ -45,6 +49,12 @@ flex-direction:column;
     z-index: 999;
     color:white;
     font-size: 50px;
+}
 
+.buttons-container button{
+    background-color: black;
+    color: white;
+    margin-right: 20px;
+    cursor: pointer;
 
 }
