@@ -1,4 +1,14 @@
-import { PieChart, Pie, Cell } from 'recharts';
+import { PieChart, Pie, Cell, Legend } from 'recharts';
+
+function CustomLegend() {
+  return (
+    <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
+      <li style={{ color: 'rgba(0,0,0,0.5)', fontSize: '15px', fontWeight:'700' }}>
+        Score
+      </li>
+    </ul>
+  );
+}
 
 export default function Radialchart({ data }) {
   const percentageValue = data * 100;
@@ -39,6 +49,10 @@ export default function Radialchart({ data }) {
             <Cell fill="transparent" stroke="transparent" />
           </Pie>
         </PieChart>
+        <Legend content={<CustomLegend />} verticalAlign="top" 
+          align="left" 
+          wrapperStyle={{ marginLeft: "20px", marginTop:'-20px', width: '200px', height: '36px'}} 
+        />
         <div style={{
           position: 'absolute',
           top: '50%',
