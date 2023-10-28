@@ -11,42 +11,52 @@ import Radarchart from "../componentsRecharts/Radarchart";
 import Radialchart from "../componentsRecharts/Radialchart";
 import { cardData } from "../components/utils/cardData";
 import Loader from "../components/Loader";
+
 function Profil () {
   const [datas, setDatas] = useState(null);
   const uId = useParams().id;
   const [isDataLoading, setDataLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  
   // eslint-disable-next-line no-unused-vars, no-undef
-  const [statusApi, setstatusApi] = useState(true);
+  const [statusApi, setStatusApi] = useState(false);
   const [tenLastDay, setTenLastDay]= useState(datas);
   
   useEffect(() => {
     const fetchData = async () => {
+      errorMessage?setStatusApi(false): setStatusApi(true);
       try {
         const fetchedData = await getDatasSection(uId, statusApi);
         setDatas(fetchedData);
         setTenLastDay(fetchedData?.activitiesDatas?.sessions?.slice(-10));
       } catch (err) {
-        setErrorMessage(err.message || "An unknown error occurred.");
+        console.log('Error caught:', err.message);
+        setErrorMessage(err.message !== "Network Error" ? err.message : "  L'API est hors service, les données sont mockées" || "Une erreur a été rencontrée");
+        setStatusApi(false);
       } finally {
         setDataLoading(false);
       }
     };
-  
     fetchData();
-  }, [uId]);
 
-  if (errorMessage) {
-    return <ErrorMessageModal message= {errorMessage}/>;
-  }
+    const errorTimeout = setTimeout(() => {
+      setErrorMessage(null);
+    }, 4000);
+
+    return (() => clearTimeout(errorTimeout));
+  
+  }, [uId, statusApi]); 
+
+
+
+  if (errorMessage) return <ErrorMessageModal message = {errorMessage}/>;
 
   if (isDataLoading) return <Loader/>; 
-  
-  return (
+
+  return(
     <div>
       <Header/>
       <Sidebar/>
+      {!errorMessage &&
       <main>
         <div className = "home-welcome">
           <p className="home-welcome-p">Bonjour <span>{datas?.userDatas?.userInfos?.firstName}</span></p>
@@ -74,9 +84,8 @@ function Profil () {
             ))}
           </div>
         </div>
-      </main>
-    </div>
-  );
+      </main>}
+    </div>);
 }
   
 export default Profil;

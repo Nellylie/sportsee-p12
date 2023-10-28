@@ -7,7 +7,6 @@ export const fetchData = async (userId, endpoint) => {
     const response = await axios.get(`${API_URL}/user/${userId}${endpoint ? '/' + endpoint : ''}`).then((response) => response.data);
     return response.data; 
   } catch (error) {
-    console.error("API call failed:", error);
-    return null;
+    throw ("API call failed:", error);
   }
 };
