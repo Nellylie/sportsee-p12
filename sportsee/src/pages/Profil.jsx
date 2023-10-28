@@ -19,13 +19,14 @@ function Profil () {
   
   // eslint-disable-next-line no-unused-vars, no-undef
   const [statusApi, setstatusApi] = useState(false);
-  
+  const [tenLastDay, setTenLastDay]= useState(datas);
   
   useEffect(() => {
     const fetchData = async () => {
       try {
         const fetchedData = await getDatasSection(uId, statusApi);
         setDatas(fetchedData);
+        setTenLastDay(fetchedData?.activitiesDatas?.sessions?.slice(-10));
       } catch (err) {
         setErrorMessage(err.message || "An unknown error occurred.");
       } finally {
@@ -53,7 +54,7 @@ function Profil () {
         </div>
         <div className="container-profil">
           <div className="main-left-container">
-            <Barschart className ="barchart-container" data = {datas?.activitiesDatas?.sessions}/>
+            <Barschart className ="barchart-container" data = {tenLastDay}/>
             <div className="container-line-radar-radial">
               <Lineschart className ="linechart-container" data = {datas?.averageDatas?.sessions}/>
               <Radarchart className ="radarchart-container" data = {datas?.performancesDatas?.dataPerformance}/>
