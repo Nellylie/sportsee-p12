@@ -36,7 +36,7 @@ function Barschart({data}) {
   const calorieDomain = [0, maxKilogram * 2];
 
   return (
-    <div style={{ backgroundColor: '#FBFBFB', padding: '10px 10px 2px 10px', width: '100%', height: '250px', aspectRatio: '16/9' }}>
+    <div style={{ backgroundColor: '#FBFBFB', padding: '40px 10px 2px 10px', width: '100%', height: '250px', aspectRatio: '16/9' }}>
 
       <ResponsiveContainer
         width={"100%"}
@@ -44,13 +44,10 @@ function Barschart({data}) {
       >
         <BarChart
           width={600}
-          height={200}
+          height={300}
           data={data}
-          margin={{ top: 20, right: 30, left: 80, bottom: 5 }}
+          margin={{ top: 60, right: 30, left: 80, bottom: 5 }}
         >
-          <text x={50} y={10} fontSize={14} fontWeight="bold">
-          activitée quotidienne
-          </text>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="day" />
           <YAxis
@@ -74,12 +71,15 @@ function Barschart({data}) {
           <Legend
             align="right"
             verticalAlign="top"
-            wrapperStyle={{ paddingLeft: '40px', top:"0px" }}
+            wrapperStyle={{ paddingLeft: '40px', top:'-10px' }}
             payload={[
               { value: 'kilogram', type: 'circle', id: 'ID01', color: '#282D3' },
               { value: 'calories', type: 'circle', id: 'ID02', color: '#ff0000' }
             ]}
           />
+          <text x={50} y={10} fontSize={14} fontWeight="bold">
+          activitée quotidienne
+          </text>
         </BarChart>
       </ResponsiveContainer>
     </div>
