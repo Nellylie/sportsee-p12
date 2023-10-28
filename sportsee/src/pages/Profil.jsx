@@ -10,7 +10,7 @@ import ErrorMessageModal from "../componentsRecharts/ErrorMessage";
 import Radarchart from "../componentsRecharts/Radarchart";
 import Radialchart from "../componentsRecharts/Radialchart";
 import { cardData } from "../components/utils/cardData";
-
+import Loader from "../components/Loader";
 function Profil () {
   const [datas, setDatas] = useState(null);
   const uId = useParams().id;
@@ -18,7 +18,7 @@ function Profil () {
   const [errorMessage, setErrorMessage] = useState(null);
   
   // eslint-disable-next-line no-unused-vars, no-undef
-  const [statusApi, setstatusApi] = useState(false);
+  const [statusApi, setstatusApi] = useState(true);
   const [tenLastDay, setTenLastDay]= useState(datas);
   
   useEffect(() => {
@@ -41,7 +41,7 @@ function Profil () {
     return <ErrorMessageModal message= {errorMessage}/>;
   }
 
-  if (isDataLoading) return null; 
+  if (isDataLoading) return <Loader/>; 
   
   return (
     <div>
