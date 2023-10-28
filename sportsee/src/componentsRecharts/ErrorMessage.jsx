@@ -1,9 +1,9 @@
 
 
-function ErrorMessageModal({ message, onClose }) {
+function ErrorMessageModal({ message }) {
   return (
     <div className="error-message">
-      <div onClick={onClose} />
+      <div/>
       <div>
         <p>{message}</p>
       </div>
