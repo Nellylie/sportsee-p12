@@ -11,16 +11,17 @@ import Radarchart from "../componentsRecharts/Radarchart";
 import Radialchart from "../componentsRecharts/Radialchart";
 import { cardData } from "../components/utils/cardData";
 import Loader from "../components/Loader";
+import { useNavigate } from 'react-router-dom';
 
 function Profil () {
   const [datas, setDatas] = useState(null);
   const uId = useParams().id;
   const [isDataLoading, setDataLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
-  // eslint-disable-next-line no-unused-vars, no-undef
   const [statusApi, setStatusApi] = useState(false);
   const [tenLastDay, setTenLastDay]= useState(datas);
-  
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchData = async () => {
       errorMessage?setStatusApi(false): setStatusApi(true);
@@ -29,7 +30,6 @@ function Profil () {
         setDatas(fetchedData);
         setTenLastDay(fetchedData?.activitiesDatas?.sessions?.slice(-10));
       } catch (err) {
-        console.log('Error caught:', err.message);
         setErrorMessage(err.message !== "Network Error" ? err.message : "  L'API est hors service, les données sont mockées" || "Une erreur a été rencontrée");
         setStatusApi(false);
       } finally {
@@ -39,16 +39,22 @@ function Profil () {
     fetchData();
 
     const errorTimeout = setTimeout(() => {
-      setErrorMessage(null);
+      errorMessage && !errorMessage.includes('utilisateur')&&setErrorMessage(null);
+
     }, 4000);
 
     return (() => clearTimeout(errorTimeout));
   
   }, [uId, statusApi]); 
+  
 
+  useEffect(() => {
+    if (errorMessage && errorMessage.includes('utilisateur')) {
+      setTimeout(()=>{ navigate('/');}, 4000);
+    }
+  }, [errorMessage, navigate]);
 
-
-  if (errorMessage) return <ErrorMessageModal message = {errorMessage}/>;
+  if (errorMessage) return <><ErrorMessageModal message = {errorMessage}/></>;
 
   if (isDataLoading) return <Loader/>; 
 

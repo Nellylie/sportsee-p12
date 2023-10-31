@@ -1,7 +1,7 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { useState } from 'react';
 
-function SessionsTooltip({ payload, active }) {
+function CustomTooltip({ payload, active }) {
   if (active && payload && payload.length) {
     return (
       <div  style={{ backgroundColor: 'white', paddingLeft:'10px', paddingRight:'10px'}}>
@@ -13,7 +13,7 @@ function SessionsTooltip({ payload, active }) {
   return null;
 }
 
-function CustomizedAxisTick(props) {
+function CustomAxisTick(props) {
   const { x, y, payload } = props;
 
   return (
@@ -59,10 +59,10 @@ function Lineschart({data}) {
           <XAxis dataKey="day" stroke="white"
             tickLine={false} 
             axisLine={false}
-            tick={<CustomizedAxisTick/>}
+            tick={<CustomAxisTick/>}
           />
           <YAxis stroke="transparent" />
-          <Tooltip content={<SessionsTooltip /> } cursor={false}/>
+          <Tooltip content={<CustomTooltip /> } cursor={false}/>
           <Legend content={<CustomLegend />} verticalAlign="top" 
             align="left" 
             wrapperStyle={{ marginLeft: "60px", marginTop:'-20px', width: '200px', height: '36px'}} 
@@ -73,7 +73,7 @@ function Lineschart({data}) {
             type="monotone" 
             dataKey="sessionLength" 
             stroke="white"
-            strokeWidth={2} 
+            strokeWidth={1} 
             activeDot={{ r: 8, fill: 'white' }} 
           />
         </LineChart>
