@@ -1,7 +1,8 @@
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
-export default function HexaRadarChart({data}) {
-  const reversedData = [...data].reverse();
+// retourne le radarchart avec le tableau de données associées
+function HexaRadarChart({data}) {
+  const reversedData = [...data].reverse();// inverse la disposition des données dans le sens inverse d'une aiguille d'une montre
 
   return (
     <div style={{ backgroundColor: '#282D30', borderRadius:'5px',
@@ -14,7 +15,7 @@ export default function HexaRadarChart({data}) {
           data={reversedData}
         >
           <PolarGrid gridType="polygon" />
-          <PolarAngleAxis dataKey="kind"
+          <PolarAngleAxis dataKey="kind"// associe les données kind
             tick={{ fontSize: '10px' }}
           />
           <Tooltip 
@@ -25,3 +26,4 @@ export default function HexaRadarChart({data}) {
     </div>
   );
 }
+export default HexaRadarChart;

@@ -1,5 +1,5 @@
 
-
+// retourne la modale d'erreur, composant jsx
 function ErrorMessageModal({ message }) {
   return (
     <div className="error-message">

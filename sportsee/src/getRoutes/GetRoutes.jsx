@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router';
 import HomePage from '../pages/HomePage';
 import Profil from '../pages/Profil';
 
-
+// fournit les routes, associe les composants aux urls adéquates
 function RoutesProvider() {
   return (
     <Routes>

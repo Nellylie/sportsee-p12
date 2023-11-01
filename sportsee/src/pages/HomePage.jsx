@@ -1,6 +1,8 @@
 
 import { Link } from "react-router-dom";
 
+// le composant homePage, donne le choix entre deux profils,
+// utilisé pour le mode développement de l'application
 function HomePage() {
   
   return (

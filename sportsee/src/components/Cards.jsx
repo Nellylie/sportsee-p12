@@ -1,3 +1,4 @@
+// Retourne le composant Cards, sera bouclé dans le composant Profil
 function Cards ({icon, number, unit, type, color}) {
 
   return (
