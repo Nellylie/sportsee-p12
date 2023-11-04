@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import Barschart from '../componentsRecharts/Barschart';
 import Cards from "../components/Cards";
 import Lineschart from "../componentsRecharts/Lineschart";
-import ErrorMessageModal from "../componentsRecharts/ErrorMessage";
+import ErrorMessageModal from "../components/ErrorMessage";
 import Radarchart from "../componentsRecharts/Radarchart";
 import Radialchart from "../componentsRecharts/Radialchart";
 import { cardData } from "../components/utils/cardData";
@@ -22,7 +22,7 @@ function Profil () {
   const uId = useParams().id;
   const [isDataLoading, setDataLoading] = useState(true); // informe si la page est entrain de charger ou a fini de charger
   const [errorMessage, setErrorMessage] = useState(null);// le contenu du message d'erreur
-  const [statusApi, setStatusApi] = useState(false);// informe si l'API est hors services ou non
+  const [statusApi, setStatusApi] = useState(true);// informe si l'API est hors services ou non
   const [tenLastDay, setTenLastDay]= useState(datas);// récupère les dix derniers jours
   const navigate = useNavigate(); // permettra la redirection vers le home en cas d'erreur 
 
@@ -37,7 +37,7 @@ function Profil () {
         setTenLastDay(fetchedData?.activitiesDatas?.sessions?.slice(-10));// récupère les dix derniers jours
       } catch (err) {
         // quand une erreur est rencontrée
-        setErrorMessage(err.message !== "Network Error" ? err.message : "  L'API est hors service, les données sont mockées" || "Une erreur a été rencontrée");
+        setErrorMessage(err.message !== "Network Error" ? err.message : "  L'API est hors service, les données sont mockées" );
         setStatusApi(false);
       } finally {
         // le chargement n'est plus et la page est la
