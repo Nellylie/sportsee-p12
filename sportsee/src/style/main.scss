@@ -1,5 +1,8 @@
 @import "./global";
-@import "./head";
-@import "./sidebar";
-@import "./profil";
-@import "./cards";
+@import "../components/header/style/head";
+@import "../components/sidebar/style/sidebar";
+@import "../pages/profil/style/profil";
+@import "../components/cards/style/cards";
+@import "../components/loader/style/loader";
+@import "../components/errormodal/style/error";
+@import "../pages/home/style/home";

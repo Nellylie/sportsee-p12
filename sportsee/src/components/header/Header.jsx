@@ -1,8 +1,7 @@
 import { NavLink } from "react-router-dom";
-import logo from '../icones/logo.svg';
+import logo from './image/logo.svg';
 
-// retourne le composant Header
-// utilise NavLink pour la navigation parmi les menus
+// retourne le composant Header, les menus
 function Header () {
   return (
     <header className="header-main">

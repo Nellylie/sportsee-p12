@@ -15,7 +15,7 @@ function HexaRadarChart({data}) {
           data={reversedData}
         >
           <PolarGrid gridType="polygon" />
-          <PolarAngleAxis dataKey="kind"// associe les données kind
+          <PolarAngleAxis dataKey="kind"
             tick={{ fontSize: '10px' }}
           />
           <Tooltip 

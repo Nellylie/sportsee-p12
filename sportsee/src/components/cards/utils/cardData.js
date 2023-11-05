@@ -1,7 +1,7 @@
-import iconCalories from '../../icones/energy.svg';
-import iconCarbs from '../../icones/apple.svg';
-import iconProtein from '../../icones/chicken.svg';
-import iconFat from '../../icones/cheeseburger.svg';
+import iconCalories from '../icones/energy.svg';
+import iconCarbs from '../icones/apple.svg';
+import iconProtein from '../icones/chicken.svg';
+import iconFat from '../icones/cheeseburger.svg';
 
 // Liste pour la Sructure des proprietes des objets pour gerer le composant Cards.jsx
 // prend en propriété les datas et les redistribue dans la propriete adéquate

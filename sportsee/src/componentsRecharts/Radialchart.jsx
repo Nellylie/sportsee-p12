@@ -12,10 +12,10 @@ function CustomLegend() {
 
 // retourne le radialchart avec le tableau de données associées
 export default function Radialchart({ data }) {
-  const percentageValue = data * 100; // transforme la décimale en entier
+  const percentageValue = data * 100; 
   const dataPie = [
     { value: percentageValue },
-    { value: 100 - percentageValue } // pour réaliser la valeur de la tarte, la forme d'arc sera simulé à partir de là
+    { value: 100 - percentageValue }
   ];
 
   return (
@@ -37,13 +37,13 @@ export default function Radialchart({ data }) {
         </svg>
         <PieChart width={200} height={200}// utilise le composant pour les figures "tartes" de recharts
         >
-          <Pie // le composant "tarte", l'arc est realisé en modifiant les radius.
+          <Pie 
             data={dataPie}
             dataKey="value"
             startAngle={-270}
             endAngle={90}
-            innerRadius={80} // rayon interieur
-            outerRadius={90} // rayon exterieur
+            innerRadius={80} 
+            outerRadius={90} 
             isAnimationActive={true}
             cornerRadius={10}
             cornerIsRound
